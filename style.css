@@ -1,0 +1,11 @@
+.newsList{
+	border:2px solid navy;
+border-collapse : collapse;
+
+}
+
+.newsList td{
+	
+border-top:1px solid navy;
+
+}

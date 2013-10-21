@@ -55,9 +55,9 @@ class News{
 	
 	public function getHTML(){
 		
-		$html = '<tr><td> Header : '. $this->_header . '</td>';
-		$html .= '<td> Author :' . $this->_author . '</td>';
-		$html .= '<td>' . $this->_text .'</td></tr>';
+		$html = '<tr><td>'. $this->_header . '</td>';
+		$html .= '<td>' . $this->_author . '</td>';
+		$html .= '<td colspan="2">' . $this->_text .'</td></tr>';
 		
 		return $html;
 		

@@ -25,7 +25,6 @@ $q = $db->prepare('INSERT INTO News SET header = :header, author = :author, text
     $q->bindValue(':header', $header);
     $q->bindValue(':author', $author);
     $q->bindValue(':text', $text);
- 
     $q->execute();
 
 	
