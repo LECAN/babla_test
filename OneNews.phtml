@@ -1,0 +1,64 @@
+<!doctype html>
+
+<html>
+
+  <head>
+    <title>List of News</title>
+    <meta charset="utf-8" />
+	<link rel="stylesheet" href="./style.css" />
+	
+  </head>
+  <body>
+ 
+  
+<?php
+
+
+if(!isset($_GET['id'])){
+	?>
+		<div>Sorry but you did not select any News.</div>
+
+
+<?php
+
+}else{
+	
+	 require 'News.php';
+
+	try{
+		// connect to database 
+		// TODO: check for connect with text file
+		$db = new PDO('mysql:host=localhost;dbname=news_form','root','');
+	}catch(Exception $e){
+		die('Erreur :' . $e->getMessage());
+	}
+
+	// prepare request for data
+	$request = $db->prepare('SELECT id, header, author, text FROM News WHERE id = :id');
+	$request->bindParam(':id', $_GET['id'],PDO::PARAM_INT);
+	$request->execute();
+	 
+	// get data in array, only one should match
+	$data = $request->fetch(PDO::FETCH_ASSOC);
+	
+	  // create an object news with data
+	  $news = new News;
+	  // add data to news object
+	 $news->hydrate($data);
+	  
+	 echo $news->getHTML();
+}
+?>
+	
+
+<!-- allow user to return to form.html -->
+	<br/>
+	<a href="./list.phtml" >return to list</a>
+
+	<script type="text/javascript" src="./js/jquery-2.0.3.min.js"></script>
+	<script type="text/javascript" src="./js/newsclick.js"></script>
+	
+  </body>
+
+</html>
+

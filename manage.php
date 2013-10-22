@@ -27,7 +27,7 @@ $q = $db->prepare('INSERT INTO News SET header = :header, author = :author, text
     $q->bindValue(':text', $text);
     $q->execute();
 
-	
+	// redirect to the list of news
 header('Location: list.phtml');
 	
 }

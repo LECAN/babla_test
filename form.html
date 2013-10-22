@@ -6,18 +6,46 @@
     <title>News Form</title>
     <meta charset="utf-8" />
 	<link rel="stylesheet" href="style.css" />
+	<script type="text/javascript" src="./js/jquery-2.0.3.min.js"></script>
   </head>
 
   <body>
   
-	<form action="./manage.php" method="post" >
-		Header : <input type="text" name="header" ><br/>
-		Author : <input type="text" name="author" ><br/>
-		Text : <textarea name="text"></textarea><br/>
-		<input type="submit" value="Submit">
+	<form id="myForm" action="./manage.php" method="post" >
+		<table>
+		<tr><td>Header :</td><td> <input id="headerInput" type="text" name="header" ><div class="warning" id="headerWarning">Please fill the header field</div></td></tr><br/>
+		<tr><td>Author :</td><td> <input id="authorInput" type="text" name="author" ><div class="warning" id="authorWarning">Please fill the author field</td></div></td></tr><br/>
+		<tr><td>Text :</td><td> <textarea id="textInput" name="text"></textarea><div class="warning" id="textWarning">Please fill the text field</td></div></td></tr><br/>
+		<tr><td colspan="2" ><input type="submit" value="Submit"></td></tr>
 	
 	</form>
+	<script>
 	
+		/********************************************
+		*	Check empty fields and stop submiting form if one is found
+		*
+		***************************************/
+		$("form").submit(function(event){
+			var pass =true;
+			if($("#headerInput").val().length == 0){
+				$("#headerWarning").show();
+				pass=false;
+			}
+			
+			if($("#authorInput").val().length == 0){
+				$("#authorWarning").show();
+				pass=false;
+			}
+			if($("#textInput").val().length == 0){
+				$("#textWarning").show();
+				pass=false;
+			}
+			
+			if(!pass){
+				event.preventDefault();
+			}
+		}); 
+	</script>
 
   </body>
 

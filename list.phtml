@@ -6,10 +6,9 @@
     <title>List of News</title>
     <meta charset="utf-8" />
 	<link rel="stylesheet" href="./style.css" />
+	
   </head>
-
   <body>
-  
   <H1> List of News</H1>
   
 <?php
@@ -30,7 +29,6 @@ $request = $db->query('SELECT id, header, author, text FROM News');
 ?>
 	<table class="newsList">
 		<tbody >
-			<th> Header</th><th>Author</th><th>Text</th>
 		
 <?php
 //get data in array
@@ -48,8 +46,13 @@ while ($data = $request->fetch(PDO::FETCH_ASSOC))
 	</tbody>
 	</table>
 
+<!-- allow user to return to form.html -->
+	<br/>
+	<a href="./form.html" >return to form</a>
 
-
+	<script type="text/javascript" src="./js/jquery-2.0.3.min.js"></script>
+	<script type="text/javascript" src="./js/newsclick.js"></script>
+	
   </body>
 
 </html>

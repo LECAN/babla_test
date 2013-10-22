@@ -7,6 +7,12 @@ class News{
 	private $_author;
 	private $_text;
 
+	/*************************************************
+	*
+	*	use data array ( coming from database) to set News object parameters
+	*
+	*
+	***************************************************/
 	public function hydrate(array $data)
 	{
 	  if (isset($data['id']))
@@ -53,11 +59,16 @@ class News{
 		$this->_text = $text;
 	}
 	
+	/*************************************************
+	*
+	*	return html code to display the news
+	*
+	************************************************/
 	public function getHTML(){
 		
-		$html = '<tr><td>'. $this->_header . '</td>';
-		$html .= '<td>' . $this->_author . '</td>';
-		$html .= '<td colspan="2">' . $this->_text .'</td></tr>';
+		$html = '<tr><td><div id="'.$this->_id.'" class="item" ><H2>'. $this->_header . '</H2>';
+		$html .= ' Author :' . $this->_author . '<br/>';
+		$html .= '' . $this->_text .'</div></td></tr>';
 		
 		return $html;
 		
