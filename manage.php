@@ -16,13 +16,16 @@ try{
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	
 	$header =   isset($_POST['header']) ? htmlentities($_POST['header']) : '';
+	$newsDate =  isset($_POST['newsDate']) ? htmlentities($_POST['newsDate']) : '';
   $author =  isset($_POST['author']) ? htmlentities($_POST['author']) : '';
   $text = isset($_POST['text']) ? htmlentities($_POST['text']) : '';
 
+  $date = new DateTime($newsDate);
 	
-$q = $db->prepare('INSERT INTO News SET header = :header, author = :author, text = :text');
+$q = $db->prepare('INSERT INTO News SET header = :header, newsDate = :newsDate, author = :author, text = :text');
  
     $q->bindValue(':header', $header);
+	$q->bindValue(':newsDate', $date->format('Y-m-d'));
     $q->bindValue(':author', $author);
     $q->bindValue(':text', $text);
     $q->execute();

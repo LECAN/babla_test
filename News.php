@@ -4,6 +4,7 @@ class News{
 
 	private $_id;
 	private $_header;
+	private $_date;
 	private $_author;
 	private $_text;
 
@@ -24,6 +25,12 @@ class News{
 	  {
 		$this->setHeader($data['header']);
 	  }
+	  
+	  if (isset($data['newsDate']))
+	  {
+		$this->setDate($data['newsDate']);
+	  }
+	  
 		if (isset($data['author']))
 	  {
 		$this->setAuthor($data['author']);
@@ -38,6 +45,10 @@ class News{
 	public function getHeader(){
 		return $this->_header;
 	}
+	
+	public function getDate(){
+		return $this->_date;
+	}
 
 	public function getAuthor(){
 		return $this->_author;
@@ -49,6 +60,10 @@ class News{
 
 	public function setHeader($header){
 		$this->_header = $header;
+	}
+	
+	public function setDate($date){
+		$this->_date = $date;
 	}
 
 	public function setAuthor($author){
@@ -67,6 +82,7 @@ class News{
 	public function getHTML(){
 		
 		$html = '<tr><td><div id="'.$this->_id.'" class="item" ><H2>'. $this->_header . '</H2>';
+		$html .= ' Date :' . $this->_date. '<br/>';
 		$html .= ' Author :' . $this->_author . '<br/>';
 		$html .= '' . $this->_text .'</div></td></tr>';
 		

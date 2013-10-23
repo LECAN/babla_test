@@ -27,3 +27,7 @@ body,html{
 	color:red;
 	display:none;
 }
+
+#ui-datepicker-div{
+	background:grey;
+}

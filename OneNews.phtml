@@ -34,7 +34,7 @@ if(!isset($_GET['id'])){
 	}
 
 	// prepare request for data
-	$request = $db->prepare('SELECT id, header, author, text FROM News WHERE id = :id');
+	$request = $db->prepare('SELECT id, header,newsDate, author, text FROM News WHERE id = :id');
 	$request->bindParam(':id', $_GET['id'],PDO::PARAM_INT);
 	$request->execute();
 	 

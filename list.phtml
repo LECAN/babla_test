@@ -24,7 +24,7 @@ try{
 }
 
 //prepare request for data
-$request = $db->query('SELECT id, header, author, text FROM News');
+$request = $db->query('SELECT id, header,newsDate, author, text FROM News');
 
 ?>
 	<table class="newsList">
